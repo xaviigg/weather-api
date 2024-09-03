@@ -8,13 +8,14 @@ const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 describe('OpenWeatherClient', () => {
     const apiKey = 'dummy_api_key';
-    let client = new OpenWeatherClient(apiKey);
+    const baseUrl = 'http://dummy_url';
+    let client = new OpenWeatherClient(apiKey, baseUrl);
     let axiosInstance: any;
     beforeEach(() => {
         mockedAxios.create.mockReturnValue({
             get: jest.fn(),
         } as any);
-        client = new OpenWeatherClient('dummy_api_key');
+        client = new OpenWeatherClient(apiKey, baseUrl);
         axiosInstance = client['axiosInstance'] as jest.Mocked<AxiosInstance>;
     });
 
