@@ -6,7 +6,7 @@ dotenv.config();
 
 const app = express();
 
-const weatherClient = new OpenWeatherClient(process.env.OPENWEATHER_API_KEY!);
+const weatherClient = new OpenWeatherClient(process.env.OPENWEATHER_API_BASE_URL!, process.env.OPENWEATHER_API_KEY!);
 const weatherController = new WeatherController(weatherClient);
 
 app.get('/api/weather', (req, res) => weatherController.getWeather(req, res));

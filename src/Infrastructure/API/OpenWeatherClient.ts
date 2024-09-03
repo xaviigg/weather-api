@@ -7,11 +7,12 @@ class OpenWeatherClient {
     private readonly axiosInstance: AxiosInstance;
 
     constructor(
+        baseUrl: string,
         apiKey: string,
     ) {
         this.apiKey = apiKey;
         this.axiosInstance = axios.create({
-            baseURL: 'https://api.openweathermap.org/data/2.5',
+            baseURL: baseUrl,
             timeout: 5000,
         });
     };
