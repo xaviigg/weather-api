@@ -3,6 +3,7 @@ import { WeatherRepository } from "../../Domain/Repository/WeatherRepository";
 import Coordinates from "../../Domain/ValueObject/Coordinates";
 import Description from "../../Domain/ValueObject/Description";
 import Humidity from "../../Domain/ValueObject/Humidity";
+import Location from "../../Domain/ValueObject/Location";
 import Temperature from "../../Domain/ValueObject/Temperature";
 import Title from "../../Domain/ValueObject/Title";
 import Wind from "../../Domain/ValueObject/Wind";
@@ -18,6 +19,7 @@ export default class OpenWeatherRepository implements WeatherRepository {
 
         return new Weather(
             new Coordinates(data.coord.lat, data.coord.lon),
+            new Location(data.name),
             new Temperature(
                 data.main.temp,
                 data.main.temp_min,
