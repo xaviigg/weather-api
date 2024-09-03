@@ -22,6 +22,10 @@ describe('WeatherController', () => {
             .mockResolvedValue(openWeatherResponseMock);
     });
 
+    afterEach(() => {
+        mockGetWeatherByCoordinatesClient.mockRestore();
+    });
+
     it('should return weather data successfully', async () => {
         const response = await request(app)
             .get('/api/weather')

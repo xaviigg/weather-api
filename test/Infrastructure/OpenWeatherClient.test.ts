@@ -11,12 +11,17 @@ describe('OpenWeatherClient', () => {
     const baseUrl = 'http://dummy_url';
     let client = new OpenWeatherClient(apiKey, baseUrl);
     let axiosInstance: any;
+
     beforeEach(() => {
         mockedAxios.create.mockReturnValue({
             get: jest.fn(),
         } as any);
         client = new OpenWeatherClient(apiKey, baseUrl);
         axiosInstance = client['axiosInstance'] as jest.Mocked<AxiosInstance>;
+    });
+
+    afterEach(() => {
+        jest.clearAllMocks();
     });
 
     it('should fetch weather data successfully', async () => {
